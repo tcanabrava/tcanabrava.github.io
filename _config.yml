@@ -5,6 +5,7 @@ plugins:
   - jekyll-octicons
   - jekyll-github-metadata
   - jemoji
+  - jekyll-feed
 
 permalink: /:year/:month/:day/:title/
 
