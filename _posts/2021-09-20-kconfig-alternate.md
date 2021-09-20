@@ -68,3 +68,8 @@ The defaut values can be queried with `Default` variants:
 ```
 
 There's no code to automatically handle ui files, like KConfigXT, nor there will be. create your connects by hand using this.
+
+The source is at https://github.com/tcanabrava/configuration-parser
+Currently the build produces two binaries: one for qsettings, one for kconfig.
+
+(if anyone is better at cmake than myself, I'd appreicate some help on ConfigurationCompiler.cmake, as it's not correctly generating the targets on a 3rd party project)
