@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+      <meta name="description" content="Somewhat updated list of C++, Qt and KDE bits" />
+      
+    
+
+      <title>Tomaz Canabrava Ramblings - KConfigXT Alternative Generator</title>
+
+      
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="https://tcanabrava.github.io/atom.xml">
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://tcanabrava.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Tomaz Canabrava Ramblings</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;tcanabrava.github.io">Tomaz Canabrava Ramblings</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;kconfig-alternate&#x2F;">KConfigXT Alternative Generator</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2021-09-20</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>I'm using for my own personal projects a generator for c++ preferences for quite a while, I'll not say that it's heavily tested as KConfigXT is, but it is also <em>much</em> more simple than it.</p>
+<p>While talking about it to a fellow developer he asked me how hard it would be to port the thing to KConfig (as the main backend I used was QSettings) - and the result is quite nice, the port toook
+less than a day, and now my generator generates configurations for both KConfig and QSettings.</p>
+<ul>
+<li>Example configuration:</li>
+</ul>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>preferences.conf
+</span><span>
+</span><span>#include &lt;QString&gt;
+</span><span>#include &lt;QStandardPaths&gt;
+</span><span>
+</span><span>Preferences {
+</span><span>    General {
+</span><span>        int beatsPerMinute = 60
+</span><span>    }
+</span><span>    Some {
+</span><span>        Inner {
+</span><span>            Group {
+</span><span>                int value = 10
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>    Harmonica {
+</span><span>        QString partitureFolder = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)
+</span><span>    }
+</span><span>}
+</span><span>
+</span></code></pre>
+<p>For those that worked with KConfigXT, it's easy to see how much this is different from the xml that the tool uses. And differently from KConfigXT, the code is smaller, easier to read, and does not rely on magic enums, nor it has a lot of different possibilities to fine tune the settings - if you want to choose between runtime or compile time file, shared vs non shared config, etc.: KConfigXT is for you, mine is supposed to be simple and up to the point.</p>
+<span id="continue-reading"></span>
+<p>That Preferences will generate all the corresponding C++ classes with the needed boilerplate for a Qt application to handle settings, in a safe way - no more strings for keys on code.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Preferences::self()-&gt;some()-&gt;inner()-&gt;group()-&gt;setValue(15);
+</span><span>Preferences::self()-&gt;general()-&gt;setBeatsPerMinute(10);
+</span></code></pre>
+<p>All of the preferences are exported as Q_PROPERTIES using <code>snake_case</code>
+so you use it directly on Qml.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>SomeQmlElement {
+</span><span>    width: preferences.window.width
+</span><span>}
+</span></code></pre>
+<p>If you want to set specific rules to the Preferences values, this is done in c++, using the <code>setRule</code> variants of the settings:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>int main(int argc, char *argv[]) {
+</span><span>   QApplication app(argc, argv);
+</span><span>   Preferences::self()-&gt;some()-&gt;inner()-&gt;group()-&gt;setValueRule([](int value) { return value &lt; 90; });
+</span><span>}
+</span></code></pre>
+<p>The defaut values can be queried with <code>Default</code> variants:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>  Preferences::self()-&gt;some()-&gt;inner()-&gt;group-&gt;valueDefault();
+</span></code></pre>
+<p>There's no code to automatically handle ui files, like KConfigXT, nor there will be. create your connects by hand using this.</p>
+<p>The source is at https://github.com/tcanabrava/configuration-parser
+Currently the build produces two binaries: one for qsettings, one for kconfig.</p>
+<p>(if anyone is better at cmake than myself, I'd appreicate some help on ConfigurationCompiler.cmake, as it's not correctly generating the targets on a 3rd party project)</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://tcanabrava.github.io/tags/kde/">#kde</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://tcanabrava.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

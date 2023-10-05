@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Tomaz Canabrava Ramblings - kde</title>
+    <subtitle>Somewhat updated list of C++, Qt and KDE bits</subtitle>
+    <link href="https://tcanabrava.github.io/tags/kde/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://tcanabrava.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-10-04T00:00:00+00:00</updated>
+    <id>https://tcanabrava.github.io/tags/kde/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Is this still on?</title>
+        <published>2023-10-04T00:00:00+00:00</published>
+        <updated>2023-10-04T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/is-this-still-on/" type="text/html"/>
+        <id>https://tcanabrava.github.io/is-this-still-on/</id>
+        
+        <summary type="html">&lt;p&gt;It&#x27;s been a Long long time without posting anything. Not that i&#x27;m lazy (well, a bit).
+But I have been working on a lot of things related to KDE this past few years, and I was finally able to release and opensource Codevis.
+I know this post is as small as a tweet, just checking if the integration is stil working&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Konsole in 2021</title>
+        <published>2021-12-27T00:00:00+00:00</published>
+        <updated>2021-12-27T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/konsole-in-2021/" type="text/html"/>
+        <id>https://tcanabrava.github.io/konsole-in-2021/</id>
+        
+        <summary type="html">&lt;p&gt;This year konsole kept the momentum it gained in 2020, and implemented quite
+a lot of userful new features. We Finally implemented Reflow, thanks to the
+combined effort of me and Carlos Alves - that was one of the most requested
+features of konsole for the entire history of the project.&lt;&#x2F;p&gt;
+&lt;p&gt;Ahmad Samir fixed &lt;em&gt;tons&lt;&#x2F;em&gt; of issues in konsole, all around the codebase, he&#x27;s
+the person with most commits on konsole this year, praise to him.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>KConfigXT Alternative Generator</title>
+        <published>2021-09-20T00:00:00+00:00</published>
+        <updated>2021-09-20T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/kconfig-alternate/" type="text/html"/>
+        <id>https://tcanabrava.github.io/kconfig-alternate/</id>
+        
+        <summary type="html">&lt;p&gt;I&#x27;m using for my own personal projects a generator for c++ preferences for quite a while, I&#x27;ll not say that it&#x27;s heavily tested as KConfigXT is, but it is also &lt;em&gt;much&lt;&#x2F;em&gt; more simple than it.&lt;&#x2F;p&gt;
+&lt;p&gt;While talking about it to a fellow developer he asked me how hard it would be to port the thing to KConfig (as the main backend I used was QSettings) - and the result is quite nice, the port toook
+less than a day, and now my generator generates configurations for both KConfig and QSettings.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Example configuration:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;preferences.conf
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#include &amp;lt;QString&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#include &amp;lt;QStandardPaths&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;Preferences {
+&lt;&#x2F;span&gt;&lt;span&gt;    General {
+&lt;&#x2F;span&gt;&lt;span&gt;        int beatsPerMinute = 60
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;    Some {
+&lt;&#x2F;span&gt;&lt;span&gt;        Inner {
+&lt;&#x2F;span&gt;&lt;span&gt;            Group {
+&lt;&#x2F;span&gt;&lt;span&gt;                int value = 10
+&lt;&#x2F;span&gt;&lt;span&gt;            }
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;    Harmonica {
+&lt;&#x2F;span&gt;&lt;span&gt;        QString partitureFolder = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;For those that worked with KConfigXT, it&#x27;s easy to see how much this is different from the xml that the tool uses. And differently from KConfigXT, the code is smaller, easier to read, and does not rely on magic enums, nor it has a lot of different possibilities to fine tune the settings - if you want to choose between runtime or compile time file, shared vs non shared config, etc.: KConfigXT is for you, mine is supposed to be simple and up to the point.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Konsole in 2020</title>
+        <published>2020-06-16T00:00:00+00:00</published>
+        <updated>2020-06-16T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/konsole-in-2020/" type="text/html"/>
+        <id>https://tcanabrava.github.io/konsole-in-2020/</id>
+        
+        <summary type="html">&lt;p&gt;Konsole is having a resurge in the moment, it&#x27;s the terminal emulator of choice
+for the power user that wants to break the 4th wall in *nix systems. Right now
+it can do almost all the things I want it to do, and a few more.&lt;&#x2F;p&gt;
+&lt;p&gt;Since last year you can use splits in Konsole, with full drag &amp;amp; drop support
+between tabs and windows.&lt;&#x2F;p&gt;
+&lt;p&gt;{% include youtube.html id=&amp;quot;f9Y1pul8smQ&amp;quot; %}&lt;&#x2F;p&gt;
+&lt;p&gt;You can also use Konsole to quickly check for thumbnails of anything that dolphin
+can show you, just by hovering with the mouse (and depending of your configuration)
+pressing shift&#x2F;control&#x2F;alt. To my knowledge Konsole is the only terminal emulator
+that supports this.&lt;&#x2F;p&gt;
+&lt;p&gt;{% include youtube.html id=&amp;quot;8lic9xKG4lo&amp;quot; %}&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Konsole and Splits</title>
+        <published>2019-06-27T00:00:00+00:00</published>
+        <updated>2019-06-27T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/konsole-splits/" type="text/html"/>
+        <id>https://tcanabrava.github.io/konsole-splits/</id>
+        
+        <summary type="html">&lt;p&gt;Some terminals like Tilix and Terminator offers the possibility to split the screen recursively, and I started to add the same thing to konsole. Konsole is usually said to be the swiss army knife of the terminal emulators, and if you didn&#x27;t try it yet, please do. We offer quite a lot of things that no other terminal emulator offer.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Konsole and Wayland</title>
+        <published>2019-06-18T00:00:00+00:00</published>
+        <updated>2019-06-18T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/konsole-wayland/" type="text/html"/>
+        <id>https://tcanabrava.github.io/konsole-wayland/</id>
+        
+        <summary type="html">&lt;p&gt;Wayland needs a different mindset when you are programming, you cannot just assume things works the same way as in as X11. One of my first patches to konsole was the rewrite of the Tab Bar, and a different way to deal with Drag &amp;amp; Drop of the tabs. In my mind - and how wrong I was - I could assume that I was dragging to a konsole main window by querying the widget below the mouse.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The state of Terminal Emulators in Linux</title>
+        <published>2019-06-15T00:00:00+00:00</published>
+        <updated>2019-06-15T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/the-state-of-terminals-in-linux/" type="text/html"/>
+        <id>https://tcanabrava.github.io/the-state-of-terminals-in-linux/</id>
+        
+        <summary type="html">&lt;p&gt;We are seeing a strange trend nowadays: The terminal is being more widely used in windows, after they fixed the broken cmd.exe and MS is actually actively promoting their terminal applications like Visual Studio Code and the new Windows Terminal, but on the other hand the Unix world was always terminal based, even if you tend to use the Desktop Environment for your daily needs you probably also had a Terminal open somewhere.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Hello new Konsole</title>
+        <published>2019-06-05T00:00:00+00:00</published>
+        <updated>2019-06-05T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/hello-new-konsole/" type="text/html"/>
+        <id>https://tcanabrava.github.io/hello-new-konsole/</id>
+        
+        <summary type="html">&lt;p&gt;Konsole has been ready for many many years, and got almost 10 years without anything really exciting being added, mostly because the software is ready, why should we modify something that works to add experimental features?&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+      <meta name="description" content="Somewhat updated list of C++, Qt and KDE bits" />
+      
+    
+
+      <title>Tomaz Canabrava Ramblings - Konsole and Wayland</title>
+
+      
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="https://tcanabrava.github.io/atom.xml">
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://tcanabrava.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Tomaz Canabrava Ramblings</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;tcanabrava.github.io">Tomaz Canabrava Ramblings</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;konsole-wayland&#x2F;">Konsole and Wayland</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2019-06-18</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>Wayland needs a different mindset when you are programming, you cannot just assume things works the same way as in as X11. One of my first patches to konsole was the rewrite of the Tab Bar, and a different way to deal with Drag &amp; Drop of the tabs. In my mind - and how wrong I was - I could assume that I was dragging to a konsole main window by querying the widget below the mouse.</p>
+<span id="continue-reading"></span>
+<p>Nope, this will not work. As Wayland has security by default, it will not give you anything global. What if I was a spy app trying to record another one to send to NSA? Security in Wayland is much stricter, and because of that I had to redo my drag &amp; drop patch.</p>
+<p>Konsole <em>should</em> work now with drag &amp; drop of tabs in Wayland, as soon as the patch hits master. I also have other patches waiting that will make the wayland transition smoother, I'll write about them in due time.</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://tcanabrava.github.io/tags/kde/">#kde</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://tcanabrava.github.io/even.js" ></script>
+      
+    </body>
+
+</html>
