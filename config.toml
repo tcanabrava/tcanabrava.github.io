@@ -24,15 +24,3 @@ highlight_code = true
 
 [extra]
 even_title = "Tomaz Canabrava Ramblings"
-
-[languages.en.translations]
-language_name = "English"
-about = "About"
-home = "Home"
-tags = "Tags"
-archive = "Archive"
-links = "Links"
-date_format = "%Y-%m-%d"
-next_page = "Next Page"
-last_page = "Last Page"
-
