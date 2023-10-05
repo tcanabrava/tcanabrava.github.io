@@ -16,13 +16,14 @@ taxonomies = [
 
 title = "Tomaz Canabrava Ramblings"
 description = "Somewhat updated list of C++, Qt and KDE bits"
-even_title = "Tomaz Canabrava Ramblings"
+
+generate_feed = true
 
 [markdown]
 highlight_code = true
 
 [extra]
-even_title = "Credo"
+even_title = "Tomaz Canabrava Ramblings"
 
 [languages.en.translations]
 language_name = "English"
