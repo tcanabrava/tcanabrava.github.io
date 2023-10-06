@@ -5,7 +5,7 @@
     </url>
     <url>
         <loc>https://tcanabrava.github.io/about/</loc>
-        <lastmod>2023-10-05</lastmod>
+        <lastmod>2021-10-05</lastmod>
     </url>
     <url>
         <loc>https://tcanabrava.github.io/categories/</loc>
@@ -15,6 +15,10 @@
     </url>
     <url>
         <loc>https://tcanabrava.github.io/categories/konsole/</loc>
+    </url>
+    <url>
+        <loc>https://tcanabrava.github.io/codevis-weekly-update/</loc>
+        <lastmod>2023-10-06</lastmod>
     </url>
     <url>
         <loc>https://tcanabrava.github.io/hello-new-konsole/</loc>
@@ -49,6 +53,9 @@
     </url>
     <url>
         <loc>https://tcanabrava.github.io/tags/</loc>
+    </url>
+    <url>
+        <loc>https://tcanabrava.github.io/tags/codevis/</loc>
     </url>
     <url>
         <loc>https://tcanabrava.github.io/tags/kde/</loc>

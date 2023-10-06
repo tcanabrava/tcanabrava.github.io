@@ -5,8 +5,29 @@
     <link href="https://tcanabrava.github.io/tags/kde/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://tcanabrava.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-10-04T00:00:00+00:00</updated>
+    <updated>2023-10-06T00:00:00+00:00</updated>
     <id>https://tcanabrava.github.io/tags/kde/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Codevis Weekly Update</title>
+        <published>2023-10-06T00:00:00+00:00</published>
+        <updated>2023-10-06T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/codevis-weekly-update/" type="text/html"/>
+        <id>https://tcanabrava.github.io/codevis-weekly-update/</id>
+        
+        <summary type="html">&lt;p&gt;Welcome to the first &amp;quot;Codevis Weekly Update&amp;quot;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;what-is-codevis&quot;&gt;What is Codevis?&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;invent.kde.org&#x2F;sdk&#x2F;codevis&quot;&gt;Codevis&lt;&#x2F;a&gt; is a tool to help developers manage large codebases, sponsored by Bloomberg, developed by Codethink and hosted on the KDE Infrastructure, with all that, completely opensource with a permissive license. Codevis uses a mix of technologies to do what it does, mainly &lt;code&gt;LLVM and Clang&lt;&#x2F;code&gt; to do the heavy lifting of understanding C++ Codebases, &lt;code&gt;Qt&lt;&#x2F;code&gt; for Callback management (in the form of Signal&#x2F;Slots), &lt;code&gt;KDE Frameworks&lt;&#x2F;code&gt; libraries for the desktop application, and &lt;code&gt;pure Qt&lt;&#x2F;code&gt; for the CLI application. The database layer is written with &lt;code&gt;Soci&lt;&#x2F;code&gt; , the same database layer used in CERN, targeting sqlite3.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;but-how-does-it-work&quot;&gt;But How does it work?&lt;&#x2F;h1&gt;
+&lt;p&gt;Codevis analyzes &lt;em&gt;all&lt;&#x2F;em&gt; the &lt;em&gt;visible&lt;&#x2F;em&gt; source code from your project and creates a graph database (using a relational database) in a way that the analyst can load and interpret information from the codebase without loading the codebase. The graph-database is &lt;code&gt;comprehensive&lt;&#x2F;code&gt;, and has all the information we think it&#x27;s important, and also a lot of information that&#x27;s &lt;code&gt;good to have&lt;&#x2F;code&gt;, with a bunch of information because &lt;code&gt;why not&lt;&#x2F;code&gt;. Since something that&#x27;s not important for me could be &lt;em&gt;really&lt;&#x2F;em&gt; important for a company with billions of lines of code.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;it-just-generates-visualization&quot;&gt;It just generates visualization?&lt;&#x2F;h1&gt;
+&lt;p&gt;No. Codevis also allows you to &lt;em&gt;draw&lt;&#x2F;em&gt; your software architecture and generate ready-to-compile c++ code from it. Think of this as a possibility to have C++ templates for complex projects tha are also visually documented. You can create libraries, classes, structures, connect them quickly on a dirty mockup during a meeting, and the output could be &lt;code&gt;60 c++ files on disk&lt;&#x2F;code&gt; with all the classes, folder-hierarchy and &lt;code&gt;CMake&lt;&#x2F;code&gt; ready to compile.&lt;&#x2F;p&gt;
+&lt;p&gt;This will &lt;em&gt;not&lt;&#x2F;em&gt; add any method or implement anything, but just the creation of the C++ files and CMake scripts from a small architecture meeting is pretty interesting in my point of view.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Is this still on?</title>
         <published>2023-10-04T00:00:00+00:00</published>
