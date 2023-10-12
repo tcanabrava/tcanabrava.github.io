@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+      <meta name="description" content="Somewhat updated list of C++, Qt and KDE bits" />
+      
+    
+
+      <title>Tomaz Canabrava Ramblings - Porting Codevis to KDE</title>
+
+      
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="https://tcanabrava.github.io/atom.xml">
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://tcanabrava.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Tomaz Canabrava Ramblings</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;tcanabrava.github.io">Tomaz Canabrava Ramblings</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://tcanabrava.github.io/porting-codevis-to-kde/#the-problem-with-c-tooling" class="toc-link">The Problem with C++ Tooling</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://tcanabrava.github.io/porting-codevis-to-kde/#how-codevis-started-tools-and-libraries" class="toc-link">How Codevis Started (Tools and Libraries)</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://tcanabrava.github.io/porting-codevis-to-kde/#why-did-the-change-from-pure-qt-to-kde-frameworks" class="toc-link">Why did the change from Pure Qt to KDE Frameworks?</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://tcanabrava.github.io/porting-codevis-to-kde/#how-easy-is-to-bring-a-50-100k-lines-of-code-to-kde" class="toc-link">How easy is to bring a 50 - 100K lines of code to KDE?</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://tcanabrava.github.io/porting-codevis-to-kde/#an-honest-and-unbiased-view" class="toc-link">An Honest, and unbiased, view</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://tcanabrava.github.io/porting-codevis-to-kde/#should-corporations-adopt-kde-libraries" class="toc-link">Should Corporations Adopt KDE Libraries?</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://tcanabrava.github.io/porting-codevis-to-kde/#are-the-devs-happy" class="toc-link">Are the devs Happy?</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;tcanabrava.github.io&#x2F;porting-codevis-to-kde&#x2F;">Porting Codevis to KDE</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2023-10-12</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <h1 id="the-problem-with-c-tooling">The Problem with C++ Tooling</h1>
+<p>An ISO accepted C++ tooling is inexistent, so each project will choose their own toolings based on personal preference, and sometimes, based on Corporations preferences, and unfortunately there's no common ground on what should be used. There are some programs that got the <code>Standard by consensus</code>, like <code>CMake</code>. But even tough, projects will choose <code>handmade makefiles</code>, <code>KConfig</code>, <code>meson</code>, <code>autotools</code>, and many others exist.</p>
+<p>The same thing happens for Package Managers, each Linux distributtion has a variant of packages, and on top of that there's <code>vcpkg</code>, <code>conan</code> - each one with pros and cons.</p>
+<p>The lack of a <code>node</code> or a <code>cargo</code> or a <code>pip</code> that's the entry point for the language makes it complex for developers to know where to start, and the most common idea is to build what doesn't exist, or manually install (via <code>git submodules/git subtrees</code>) things that are not disponible in your distribution or operating system.</p>
+<h1 id="how-codevis-started-tools-and-libraries">How Codevis Started (Tools and Libraries)</h1>
+<p>Codevis started as an experiment to see if it would be possible to apply the ideas in the <code>Large Scale C++</code> book by <code>John Lakos</code>. A small proof of concept was created three years ago, and we adopted a lot of libraries to be able to work fast keeping the quality high:</p>
+<ul>
+<li>Qt (5 and 6)</li>
+<li>soci (database layer used at CERN)</li>
+<li>QuaZip (easy access to compressed files)</li>
+<li>LLVM and CLang (parsing of C++ files)</li>
+<li>Sqlite3 (our actual database)</li>
+<li>Doxygen (Documentation)</li>
+<li>Python (Plugins)</li>
+<li>Catch2 (Tests)</li>
+</ul>
+<p>And this is already a fair number of libraries, specially considering that those libraries also depend on others, keeping the Dependency graph quite large. </p>
+<p>One problem that we had was to create a CI for all systems we targeted with all those libraries. both of the most common C++ package managers failed us: </p>
+<ul>
+<li><code>conan</code> did not had LLVM (and we indeed created patches for it, adding missing libraries)</li>
+<li><code>vcpkg</code> did not had some libraries that we needed, too.</li>
+</ul>
+<p>Because of this we had to manually create base CI scripts that would download, compile, install the libraries that were not found on the package managers but this is frail, as any handwritten script is.</p>
+<p>We started to look for a new home, and KDE was nice enough to host us. This gave us their amazing CI and buildsystems, that already had all the libraries we used, plus a few more.</p>
+<p>So we were able to drop the handwritten scripts for, mostly, llvm.</p>
+<h1 id="why-did-the-change-from-pure-qt-to-kde-frameworks">Why did the change from Pure Qt to KDE Frameworks?</h1>
+<p>When you are inside of a system that works, and that offers powerful and battle tested libraries, it's worth to try to use them. There are many libraries in the KDE Frameworks that I wanted to use before but it was too hard to bring to windows if I'm not using <code>craft</code>,  resembles to <code>conan</code> and knows how to build libraries and applications within the KDE universe. </p>
+<p>Adding the necessary information to build <code>Codevis</code> in craft was much simpler than expected.:</p>
+<ul>
+<li>clone <code>craft-blueprints-kde</code></li>
+<li>copy a program template and chagne it's name</li>
+<li>point to the kde repository with a list of libraries it should use</li>
+</ul>
+<p>The full <code>codevis</code> recipe for windows, mac and linux using <code>craft</code> is the following:
+Note that every line on runtimeDependencies and buildDependencies are a <code>craft</code> recipe inside of the same repository, so just by searching the folders it's easy to know what to add for your program.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>import info
+</span><span>from Packager.CollectionPackagerBase import PackagerLists
+</span><span>
+</span><span>class subinfo(info.infoclass):
+</span><span>    def setTargets(self):
+</span><span>        self.versionInfo.setDefaultValues()
+</span><span>        self.description = &quot;Codevis is a software to visualize large software architectures.&quot;
+</span><span>        self.displayName = &quot;Codevis&quot;
+</span><span>        self.webpage = &quot;http://invent.kde.org/sdk/codevis&quot;
+</span><span>        self.svnTargets[&quot;master&quot;] = &quot;http://invent.kde.org/sdk/codevis.git&quot;
+</span><span>
+</span><span>    def setDependencies(self):
+</span><span>        self.buildDependencies[&quot;kde/frameworks/extra-cmake-modules&quot;] = None
+</span><span>        self.runtimeDependencies[&quot;libs/llvm&quot;] = None
+</span><span>        self.runtimeDependencies[&quot;libs/zlib&quot;] = None
+</span><span>        self.runtimeDependencies[&quot;libs/catch2&quot;] = None
+</span><span>        self.runtimeDependencies[&quot;qt-libs/quazip&quot;] = None
+</span><span>        self.runtimeDependencies[&quot;libs/runtime&quot;] = None
+</span><span>        self.runtimeDependencies[&quot;libs/qt5/qtbase&quot;] = None
+</span><span>
+</span><span>from Package.CMakePackageBase import *
+</span><span>
+</span><span>class Package(CMakePackageBase):
+</span><span>    def __init__(self):
+</span><span>        CMakePackageBase.__init__(self)
+</span><span>        self.subinfo.options.configure.args += [&quot;-DUSE_QT_WEBENGINE=OFF &quot;, &quot;-DCOMPILE_TESTS=OFF &quot;]
+</span><span>
+</span><span>    def createPackage(self):
+</span><span>        self.defines[&quot;executable&quot;] = &quot;bin\\codevis_desktop.exe&quot;
+</span><span>        return TypePackager.createPackage(self)
+</span></code></pre>
+<h1 id="how-easy-is-to-bring-a-50-100k-lines-of-code-to-kde">How easy is to bring a 50 - 100K lines of code to KDE?</h1>
+<ul>
+<li>We adopted <code>KConfig</code></li>
+</ul>
+<p>With The build part fixed, it was time to adopt some libraries to remove some handwritten logic we had. I wrote a configuration to c++ parser to easily access configuration keys from .ini format, but this was the only project using it, so why not change to KConfig, that uses a <code>XML</code> based description for settings, and it's used by almost all programs within the KDE Infrastructure (and it certainly has way more unittests preventing breackages than what I have on my try)</p>
+<ul>
+<li>We adopted <code>KXmlGUI</code></li>
+</ul>
+<p>KXMLGui is one of the killer features of the <code>KDE Frameworks</code>. It allow you to split the logic of your interface with a description of <code>Menus</code> and <code>Toolbars</code> in <code>XML</code>, and in runtime it provides some nice features like allowing the user to change the toolbars with any action registered within the system, and a <code>searchable command pallete</code>, that's something I use in all <code>KDE</code> applications on my machine, and I sure was missing this on Codevis.</p>
+<ul>
+<li>We adopted <code>KDocTools</code></li>
+</ul>
+<p>Documentation is complex, but having an integrated documentation viewer and semantics ready, that could compile into hmtl with integrated search is impressive. Now we just need the time to actually write that documentation...</p>
+<ul>
+<li>We adopted <code>KNewStuff</code></li>
+</ul>
+<p>KNewStuff is a technology that integrates with <code>pling.com</code> and allows to distribute certain types of downloadable goodies, like wallpapers - or in our case, <code>plugins</code> to improve the system with things that the main developers didn't had the time to do yet.</p>
+<ul>
+<li>We adopted <code>KNotification</code></li>
+</ul>
+<p>Since the application takes a while to parse C++ code, or to run some plugins, <code>KNotification</code> is used to send a desktop notification to the user when an action ends. A small feature, but good for UX.</p>
+<ul>
+<li>We adopted <code>KTextEditor</code></li>
+</ul>
+<p>We need to have a place for users to develop plugins for Codevis, so KTextEditor was not a hard choice, it's the editor that powers up Kate, one of the flagship applications from KDE. Using it has been extremely easy and fast, supporting <code>syntax-highlihting</code> for multiple formats.</p>
+<h1 id="an-honest-and-unbiased-view">An Honest, and unbiased, view</h1>
+<p>The work to port Codevis to use KDE libraries took around 2 weeks, and things were good. No major breakage and just some changes in behavior (mostly for the better). We also helped the KF6 libraries with ideas while discussing on their public channel in Matrix, and patches for some other programs while developing (such as <code>Konsole</code>, <code>Kate</code>, <code>Konversation</code>).</p>
+<p>Nothing is perfect, but the outcome was a better, more stable, Codevis and the community was great while helping us understand how to use / handle specifics of a library - like <code>KNotification</code> using <code>raw news</code> without a corresponding call to a deleter. This was fixed by a comment on the Documentation stating that it auto-deletes itself.</p>
+<h1 id="should-corporations-adopt-kde-libraries">Should Corporations Adopt KDE Libraries?</h1>
+<p>For sure. The libraries are really high quality, and there are more than 90 of them. <code>Not using</code> something that's already working and with tests, is a waste of money on the corporation side.</p>
+<h1 id="are-the-devs-happy">Are the devs Happy?</h1>
+<p>Yes, and I would use KDE Frameworks again.</p>
+<p>The work for <code>Codevis</code> is sponsored by <code>Bloomberg</code>, and done by <code>Codethink</code> in the open, inside of the KDE Repositories.</p>
+<span id="continue-reading"></span>
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://tcanabrava.github.io/tags/kde/">#kde</a>
+                    
+                        <a href="https://tcanabrava.github.io/tags/codevis/">#codevis</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://tcanabrava.github.io/even.js" ></script>
+      
+    </body>
+
+</html>
