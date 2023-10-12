@@ -5,8 +5,120 @@
     <link href="https://tcanabrava.github.io/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://tcanabrava.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-10-06T00:00:00+00:00</updated>
+    <updated>2023-10-12T00:00:00+00:00</updated>
     <id>https://tcanabrava.github.io/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Porting Codevis to KDE</title>
+        <published>2023-10-12T00:00:00+00:00</published>
+        <updated>2023-10-12T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://tcanabrava.github.io/porting-codevis-to-kde/" type="text/html"/>
+        <id>https://tcanabrava.github.io/porting-codevis-to-kde/</id>
+        
+        <content type="html">&lt;h1 id=&quot;the-problem-with-c-tooling&quot;&gt;The Problem with C++ Tooling&lt;&#x2F;h1&gt;
+&lt;p&gt;An ISO accepted C++ tooling is inexistent, so each project will choose their own toolings based on personal preference, and sometimes, based on Corporations preferences, and unfortunately there&#x27;s no common ground on what should be used. There are some programs that got the &lt;code&gt;Standard by consensus&lt;&#x2F;code&gt;, like &lt;code&gt;CMake&lt;&#x2F;code&gt;. But even tough, projects will choose &lt;code&gt;handmade makefiles&lt;&#x2F;code&gt;, &lt;code&gt;KConfig&lt;&#x2F;code&gt;, &lt;code&gt;meson&lt;&#x2F;code&gt;, &lt;code&gt;autotools&lt;&#x2F;code&gt;, and many others exist.&lt;&#x2F;p&gt;
+&lt;p&gt;The same thing happens for Package Managers, each Linux distributtion has a variant of packages, and on top of that there&#x27;s &lt;code&gt;vcpkg&lt;&#x2F;code&gt;, &lt;code&gt;conan&lt;&#x2F;code&gt; - each one with pros and cons.&lt;&#x2F;p&gt;
+&lt;p&gt;The lack of a &lt;code&gt;node&lt;&#x2F;code&gt; or a &lt;code&gt;cargo&lt;&#x2F;code&gt; or a &lt;code&gt;pip&lt;&#x2F;code&gt; that&#x27;s the entry point for the language makes it complex for developers to know where to start, and the most common idea is to build what doesn&#x27;t exist, or manually install (via &lt;code&gt;git submodules&#x2F;git subtrees&lt;&#x2F;code&gt;) things that are not disponible in your distribution or operating system.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;how-codevis-started-tools-and-libraries&quot;&gt;How Codevis Started (Tools and Libraries)&lt;&#x2F;h1&gt;
+&lt;p&gt;Codevis started as an experiment to see if it would be possible to apply the ideas in the &lt;code&gt;Large Scale C++&lt;&#x2F;code&gt; book by &lt;code&gt;John Lakos&lt;&#x2F;code&gt;. A small proof of concept was created three years ago, and we adopted a lot of libraries to be able to work fast keeping the quality high:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Qt (5 and 6)&lt;&#x2F;li&gt;
+&lt;li&gt;soci (database layer used at CERN)&lt;&#x2F;li&gt;
+&lt;li&gt;QuaZip (easy access to compressed files)&lt;&#x2F;li&gt;
+&lt;li&gt;LLVM and CLang (parsing of C++ files)&lt;&#x2F;li&gt;
+&lt;li&gt;Sqlite3 (our actual database)&lt;&#x2F;li&gt;
+&lt;li&gt;Doxygen (Documentation)&lt;&#x2F;li&gt;
+&lt;li&gt;Python (Plugins)&lt;&#x2F;li&gt;
+&lt;li&gt;Catch2 (Tests)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;And this is already a fair number of libraries, specially considering that those libraries also depend on others, keeping the Dependency graph quite large. &lt;&#x2F;p&gt;
+&lt;p&gt;One problem that we had was to create a CI for all systems we targeted with all those libraries. both of the most common C++ package managers failed us: &lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;conan&lt;&#x2F;code&gt; did not had LLVM (and we indeed created patches for it, adding missing libraries)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;vcpkg&lt;&#x2F;code&gt; did not had some libraries that we needed, too.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Because of this we had to manually create base CI scripts that would download, compile, install the libraries that were not found on the package managers but this is frail, as any handwritten script is.&lt;&#x2F;p&gt;
+&lt;p&gt;We started to look for a new home, and KDE was nice enough to host us. This gave us their amazing CI and buildsystems, that already had all the libraries we used, plus a few more.&lt;&#x2F;p&gt;
+&lt;p&gt;So we were able to drop the handwritten scripts for, mostly, llvm.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;why-did-the-change-from-pure-qt-to-kde-frameworks&quot;&gt;Why did the change from Pure Qt to KDE Frameworks?&lt;&#x2F;h1&gt;
+&lt;p&gt;When you are inside of a system that works, and that offers powerful and battle tested libraries, it&#x27;s worth to try to use them. There are many libraries in the KDE Frameworks that I wanted to use before but it was too hard to bring to windows if I&#x27;m not using &lt;code&gt;craft&lt;&#x2F;code&gt;,  resembles to &lt;code&gt;conan&lt;&#x2F;code&gt; and knows how to build libraries and applications within the KDE universe. &lt;&#x2F;p&gt;
+&lt;p&gt;Adding the necessary information to build &lt;code&gt;Codevis&lt;&#x2F;code&gt; in craft was much simpler than expected.:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;clone &lt;code&gt;craft-blueprints-kde&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;copy a program template and chagne it&#x27;s name&lt;&#x2F;li&gt;
+&lt;li&gt;point to the kde repository with a list of libraries it should use&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The full &lt;code&gt;codevis&lt;&#x2F;code&gt; recipe for windows, mac and linux using &lt;code&gt;craft&lt;&#x2F;code&gt; is the following:
+Note that every line on runtimeDependencies and buildDependencies are a &lt;code&gt;craft&lt;&#x2F;code&gt; recipe inside of the same repository, so just by searching the folders it&#x27;s easy to know what to add for your program.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;import info
+&lt;&#x2F;span&gt;&lt;span&gt;from Packager.CollectionPackagerBase import PackagerLists
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;class subinfo(info.infoclass):
+&lt;&#x2F;span&gt;&lt;span&gt;    def setTargets(self):
+&lt;&#x2F;span&gt;&lt;span&gt;        self.versionInfo.setDefaultValues()
+&lt;&#x2F;span&gt;&lt;span&gt;        self.description = &amp;quot;Codevis is a software to visualize large software architectures.&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        self.displayName = &amp;quot;Codevis&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        self.webpage = &amp;quot;http:&#x2F;&#x2F;invent.kde.org&#x2F;sdk&#x2F;codevis&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        self.svnTargets[&amp;quot;master&amp;quot;] = &amp;quot;http:&#x2F;&#x2F;invent.kde.org&#x2F;sdk&#x2F;codevis.git&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    def setDependencies(self):
+&lt;&#x2F;span&gt;&lt;span&gt;        self.buildDependencies[&amp;quot;kde&#x2F;frameworks&#x2F;extra-cmake-modules&amp;quot;] = None
+&lt;&#x2F;span&gt;&lt;span&gt;        self.runtimeDependencies[&amp;quot;libs&#x2F;llvm&amp;quot;] = None
+&lt;&#x2F;span&gt;&lt;span&gt;        self.runtimeDependencies[&amp;quot;libs&#x2F;zlib&amp;quot;] = None
+&lt;&#x2F;span&gt;&lt;span&gt;        self.runtimeDependencies[&amp;quot;libs&#x2F;catch2&amp;quot;] = None
+&lt;&#x2F;span&gt;&lt;span&gt;        self.runtimeDependencies[&amp;quot;qt-libs&#x2F;quazip&amp;quot;] = None
+&lt;&#x2F;span&gt;&lt;span&gt;        self.runtimeDependencies[&amp;quot;libs&#x2F;runtime&amp;quot;] = None
+&lt;&#x2F;span&gt;&lt;span&gt;        self.runtimeDependencies[&amp;quot;libs&#x2F;qt5&#x2F;qtbase&amp;quot;] = None
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;from Package.CMakePackageBase import *
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;class Package(CMakePackageBase):
+&lt;&#x2F;span&gt;&lt;span&gt;    def __init__(self):
+&lt;&#x2F;span&gt;&lt;span&gt;        CMakePackageBase.__init__(self)
+&lt;&#x2F;span&gt;&lt;span&gt;        self.subinfo.options.configure.args += [&amp;quot;-DUSE_QT_WEBENGINE=OFF &amp;quot;, &amp;quot;-DCOMPILE_TESTS=OFF &amp;quot;]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    def createPackage(self):
+&lt;&#x2F;span&gt;&lt;span&gt;        self.defines[&amp;quot;executable&amp;quot;] = &amp;quot;bin\\codevis_desktop.exe&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        return TypePackager.createPackage(self)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;how-easy-is-to-bring-a-50-100k-lines-of-code-to-kde&quot;&gt;How easy is to bring a 50 - 100K lines of code to KDE?&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KConfig&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;With The build part fixed, it was time to adopt some libraries to remove some handwritten logic we had. I wrote a configuration to c++ parser to easily access configuration keys from .ini format, but this was the only project using it, so why not change to KConfig, that uses a &lt;code&gt;XML&lt;&#x2F;code&gt; based description for settings, and it&#x27;s used by almost all programs within the KDE Infrastructure (and it certainly has way more unittests preventing breackages than what I have on my try)&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KXmlGUI&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;KXMLGui is one of the killer features of the &lt;code&gt;KDE Frameworks&lt;&#x2F;code&gt;. It allow you to split the logic of your interface with a description of &lt;code&gt;Menus&lt;&#x2F;code&gt; and &lt;code&gt;Toolbars&lt;&#x2F;code&gt; in &lt;code&gt;XML&lt;&#x2F;code&gt;, and in runtime it provides some nice features like allowing the user to change the toolbars with any action registered within the system, and a &lt;code&gt;searchable command pallete&lt;&#x2F;code&gt;, that&#x27;s something I use in all &lt;code&gt;KDE&lt;&#x2F;code&gt; applications on my machine, and I sure was missing this on Codevis.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KDocTools&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Documentation is complex, but having an integrated documentation viewer and semantics ready, that could compile into hmtl with integrated search is impressive. Now we just need the time to actually write that documentation...&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KNewStuff&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;KNewStuff is a technology that integrates with &lt;code&gt;pling.com&lt;&#x2F;code&gt; and allows to distribute certain types of downloadable goodies, like wallpapers - or in our case, &lt;code&gt;plugins&lt;&#x2F;code&gt; to improve the system with things that the main developers didn&#x27;t had the time to do yet.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KNotification&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Since the application takes a while to parse C++ code, or to run some plugins, &lt;code&gt;KNotification&lt;&#x2F;code&gt; is used to send a desktop notification to the user when an action ends. A small feature, but good for UX.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KTextEditor&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;We need to have a place for users to develop plugins for Codevis, so KTextEditor was not a hard choice, it&#x27;s the editor that powers up Kate, one of the flagship applications from KDE. Using it has been extremely easy and fast, supporting &lt;code&gt;syntax-highlihting&lt;&#x2F;code&gt; for multiple formats.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-honest-and-unbiased-view&quot;&gt;An Honest, and unbiased, view&lt;&#x2F;h1&gt;
+&lt;p&gt;The work to port Codevis to use KDE libraries took around 2 weeks, and things were good. No major breakage and just some changes in behavior (mostly for the better). We also helped the KF6 libraries with ideas while discussing on their public channel in Matrix, and patches for some other programs while developing (such as &lt;code&gt;Konsole&lt;&#x2F;code&gt;, &lt;code&gt;Kate&lt;&#x2F;code&gt;, &lt;code&gt;Konversation&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;Nothing is perfect, but the outcome was a better, more stable, Codevis and the community was great while helping us understand how to use &#x2F; handle specifics of a library - like &lt;code&gt;KNotification&lt;&#x2F;code&gt; using &lt;code&gt;raw news&lt;&#x2F;code&gt; without a corresponding call to a deleter. This was fixed by a comment on the Documentation stating that it auto-deletes itself.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;should-corporations-adopt-kde-libraries&quot;&gt;Should Corporations Adopt KDE Libraries?&lt;&#x2F;h1&gt;
+&lt;p&gt;For sure. The libraries are really high quality, and there are more than 90 of them. &lt;code&gt;Not using&lt;&#x2F;code&gt; something that&#x27;s already working and with tests, is a waste of money on the corporation side.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;are-the-devs-happy&quot;&gt;Are the devs Happy?&lt;&#x2F;h1&gt;
+&lt;p&gt;Yes, and I would use KDE Frameworks again.&lt;&#x2F;p&gt;
+&lt;p&gt;The work for &lt;code&gt;Codevis&lt;&#x2F;code&gt; is sponsored by &lt;code&gt;Bloomberg&lt;&#x2F;code&gt;, and done by &lt;code&gt;Codethink&lt;&#x2F;code&gt; in the open, inside of the KDE Repositories.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Codevis Weekly Update</title>
         <published>2023-10-06T00:00:00+00:00</published>
