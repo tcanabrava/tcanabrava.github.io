@@ -2,22 +2,50 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title>Tomaz Canabrava Ramblings - kde</title>
     <subtitle>Somewhat updated list of C++, Qt and KDE bits</subtitle>
-    <link href="https://tcanabrava.github.io/tags/kde/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://tcanabrava.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://tcanabrava.github.io/tags/kde/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://tcanabrava.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-10-12T00:00:00+00:00</updated>
+    <updated>2024-05-09T00:00:00+00:00</updated>
     <id>https://tcanabrava.github.io/tags/kde/atom.xml</id>
+    <entry xml:lang="en">
+        <title>The State of KDE Apps and Plasma in Archlinux</title>
+        <published>2024-05-09T00:00:00+00:00</published>
+        <updated>2024-05-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/state-kde-arch/"/>
+        <id>https://tcanabrava.github.io/state-kde-arch/</id>
+        
+        <content type="html" xml:base="https://tcanabrava.github.io/state-kde-arch/">&lt;p&gt;KDE has a symbiotic relationship with many linux distros, since while we develop our software we also use particular versions of linux, I personally use archlinux as my distro of choice for many years being the only distro that I manage to bare for more than six months ( and I believe I am using it for more than 15 years already so that counts).&lt;&#x2F;p&gt;
+&lt;p&gt;The &amp;quot;recipe&amp;quot; for packaging KDE software for arch is big, because we are big, and packaging large amounts of software is no easy feat, so me and Antonio Rojas started to update the build scripts to be less manual and less error prone. All the versions of Plasma 6 that have been packaged for arch are using this scripts in one way or another (or manually when we broke everything :)&lt;&#x2F;p&gt;
+&lt;p&gt;This work is being done in a separate branch to not break the current workflow, but things are looking good and we hope to merge this in master soon, so that deploying newer versions of KDE software for arch will be a single command, meaning more time for the developers and less time creating packages.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Porting Codevis to KDE</title>
         <published>2023-10-12T00:00:00+00:00</published>
         <updated>2023-10-12T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/porting-codevis-to-kde/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/porting-codevis-to-kde/"/>
         <id>https://tcanabrava.github.io/porting-codevis-to-kde/</id>
         
-        <summary type="html">&lt;h1 id=&quot;the-problem-with-c-tooling&quot;&gt;The Problem with C++ Tooling&lt;&#x2F;h1&gt;
+        <content type="html" xml:base="https://tcanabrava.github.io/porting-codevis-to-kde/">&lt;h1 id=&quot;the-problem-with-c-tooling&quot;&gt;The Problem with C++ Tooling&lt;&#x2F;h1&gt;
 &lt;p&gt;An ISO accepted C++ tooling is inexistent, so each project will choose their own toolings based on personal preference, and sometimes, based on Corporations preferences, and unfortunately there&#x27;s no common ground on what should be used. There are some programs that got the &lt;code&gt;Standard by consensus&lt;&#x2F;code&gt;, like &lt;code&gt;CMake&lt;&#x2F;code&gt;. But even tough, projects will choose &lt;code&gt;handmade makefiles&lt;&#x2F;code&gt;, &lt;code&gt;KConfig&lt;&#x2F;code&gt;, &lt;code&gt;meson&lt;&#x2F;code&gt;, &lt;code&gt;autotools&lt;&#x2F;code&gt;, and many others exist.&lt;&#x2F;p&gt;
 &lt;p&gt;The same thing happens for Package Managers, each Linux distributtion has a variant of packages, and on top of that there&#x27;s &lt;code&gt;vcpkg&lt;&#x2F;code&gt;, &lt;code&gt;conan&lt;&#x2F;code&gt; - each one with pros and cons.&lt;&#x2F;p&gt;
 &lt;p&gt;The lack of a &lt;code&gt;node&lt;&#x2F;code&gt; or a &lt;code&gt;cargo&lt;&#x2F;code&gt; or a &lt;code&gt;pip&lt;&#x2F;code&gt; that&#x27;s the entry point for the language makes it complex for developers to know where to start, and the most common idea is to build what doesn&#x27;t exist, or manually install (via &lt;code&gt;git submodules&#x2F;git subtrees&lt;&#x2F;code&gt;) things that are not disponible in your distribution or operating system.&lt;&#x2F;p&gt;
@@ -116,17 +144,23 @@ Note that every line on runtimeDependencies and buildDependencies are a &lt;code
 &lt;h1 id=&quot;are-the-devs-happy&quot;&gt;Are the devs Happy?&lt;&#x2F;h1&gt;
 &lt;p&gt;Yes, and I would use KDE Frameworks again.&lt;&#x2F;p&gt;
 &lt;p&gt;The work for &lt;code&gt;Codevis&lt;&#x2F;code&gt; is sponsored by &lt;code&gt;Bloomberg&lt;&#x2F;code&gt;, and done by &lt;code&gt;Codethink&lt;&#x2F;code&gt; in the open, inside of the KDE Repositories.&lt;&#x2F;p&gt;
-</summary>
+</content>
         
     </entry>
     <entry xml:lang="en">
         <title>Codevis Weekly Update</title>
         <published>2023-10-06T00:00:00+00:00</published>
         <updated>2023-10-06T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/codevis-weekly-update/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/codevis-weekly-update/"/>
         <id>https://tcanabrava.github.io/codevis-weekly-update/</id>
         
         <summary type="html">&lt;p&gt;Welcome to the first &amp;quot;Codevis Weekly Update&amp;quot;&lt;&#x2F;p&gt;
@@ -144,10 +178,16 @@ Note that every line on runtimeDependencies and buildDependencies are a &lt;code
         <title>Is this still on?</title>
         <published>2023-10-04T00:00:00+00:00</published>
         <updated>2023-10-04T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/is-this-still-on/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/is-this-still-on/"/>
         <id>https://tcanabrava.github.io/is-this-still-on/</id>
         
         <summary type="html">&lt;p&gt;It&#x27;s been a Long long time without posting anything. Not that i&#x27;m lazy (well, a bit).
@@ -160,10 +200,16 @@ I know this post is as small as a tweet, just checking if the integration is sti
         <title>Konsole in 2021</title>
         <published>2021-12-27T00:00:00+00:00</published>
         <updated>2021-12-27T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/konsole-in-2021/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/konsole-in-2021/"/>
         <id>https://tcanabrava.github.io/konsole-in-2021/</id>
         
         <summary type="html">&lt;p&gt;This year konsole kept the momentum it gained in 2020, and implemented quite
@@ -179,10 +225,16 @@ the person with most commits on konsole this year, praise to him.&lt;&#x2F;p&gt;
         <title>KConfigXT Alternative Generator</title>
         <published>2021-09-20T00:00:00+00:00</published>
         <updated>2021-09-20T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/kconfig-alternate/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/kconfig-alternate/"/>
         <id>https://tcanabrava.github.io/kconfig-alternate/</id>
         
         <summary type="html">&lt;p&gt;I&#x27;m using for my own personal projects a generator for c++ preferences for quite a while, I&#x27;ll not say that it&#x27;s heavily tested as KConfigXT is, but it is also &lt;em&gt;much&lt;&#x2F;em&gt; more simple than it.&lt;&#x2F;p&gt;
@@ -221,10 +273,16 @@ less than a day, and now my generator generates configurations for both KConfig 
         <title>Konsole in 2020</title>
         <published>2020-06-16T00:00:00+00:00</published>
         <updated>2020-06-16T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/konsole-in-2020/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/konsole-in-2020/"/>
         <id>https://tcanabrava.github.io/konsole-in-2020/</id>
         
         <summary type="html">&lt;p&gt;Konsole is having a resurge in the moment, it&#x27;s the terminal emulator of choice
@@ -245,10 +303,16 @@ that supports this.&lt;&#x2F;p&gt;
         <title>Konsole and Splits</title>
         <published>2019-06-27T00:00:00+00:00</published>
         <updated>2019-06-27T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/konsole-splits/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/konsole-splits/"/>
         <id>https://tcanabrava.github.io/konsole-splits/</id>
         
         <summary type="html">&lt;p&gt;Some terminals like Tilix and Terminator offers the possibility to split the screen recursively, and I started to add the same thing to konsole. Konsole is usually said to be the swiss army knife of the terminal emulators, and if you didn&#x27;t try it yet, please do. We offer quite a lot of things that no other terminal emulator offer.&lt;&#x2F;p&gt;
@@ -259,10 +323,16 @@ that supports this.&lt;&#x2F;p&gt;
         <title>Konsole and Wayland</title>
         <published>2019-06-18T00:00:00+00:00</published>
         <updated>2019-06-18T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/konsole-wayland/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/konsole-wayland/"/>
         <id>https://tcanabrava.github.io/konsole-wayland/</id>
         
         <summary type="html">&lt;p&gt;Wayland needs a different mindset when you are programming, you cannot just assume things works the same way as in as X11. One of my first patches to konsole was the rewrite of the Tab Bar, and a different way to deal with Drag &amp;amp; Drop of the tabs. In my mind - and how wrong I was - I could assume that I was dragging to a konsole main window by querying the widget below the mouse.&lt;&#x2F;p&gt;
@@ -273,10 +343,16 @@ that supports this.&lt;&#x2F;p&gt;
         <title>The state of Terminal Emulators in Linux</title>
         <published>2019-06-15T00:00:00+00:00</published>
         <updated>2019-06-15T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/the-state-of-terminals-in-linux/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/the-state-of-terminals-in-linux/"/>
         <id>https://tcanabrava.github.io/the-state-of-terminals-in-linux/</id>
         
         <summary type="html">&lt;p&gt;We are seeing a strange trend nowadays: The terminal is being more widely used in windows, after they fixed the broken cmd.exe and MS is actually actively promoting their terminal applications like Visual Studio Code and the new Windows Terminal, but on the other hand the Unix world was always terminal based, even if you tend to use the Desktop Environment for your daily needs you probably also had a Terminal open somewhere.&lt;&#x2F;p&gt;
@@ -287,10 +363,16 @@ that supports this.&lt;&#x2F;p&gt;
         <title>Hello new Konsole</title>
         <published>2019-06-05T00:00:00+00:00</published>
         <updated>2019-06-05T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/hello-new-konsole/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/hello-new-konsole/"/>
         <id>https://tcanabrava.github.io/hello-new-konsole/</id>
         
         <summary type="html">&lt;p&gt;Konsole has been ready for many many years, and got almost 10 years without anything really exciting being added, mostly because the software is ready, why should we modify something that works to add experimental features?&lt;&#x2F;p&gt;

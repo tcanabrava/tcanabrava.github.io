@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title>Tomaz Canabrava Ramblings - codevis</title>
     <subtitle>Somewhat updated list of C++, Qt and KDE bits</subtitle>
-    <link href="https://tcanabrava.github.io/tags/codevis/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://tcanabrava.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://tcanabrava.github.io/tags/codevis/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://tcanabrava.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2023-10-12T00:00:00+00:00</updated>
     <id>https://tcanabrava.github.io/tags/codevis/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>Porting Codevis to KDE</title>
         <published>2023-10-12T00:00:00+00:00</published>
         <updated>2023-10-12T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/porting-codevis-to-kde/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/porting-codevis-to-kde/"/>
         <id>https://tcanabrava.github.io/porting-codevis-to-kde/</id>
         
-        <summary type="html">&lt;h1 id=&quot;the-problem-with-c-tooling&quot;&gt;The Problem with C++ Tooling&lt;&#x2F;h1&gt;
+        <content type="html" xml:base="https://tcanabrava.github.io/porting-codevis-to-kde/">&lt;h1 id=&quot;the-problem-with-c-tooling&quot;&gt;The Problem with C++ Tooling&lt;&#x2F;h1&gt;
 &lt;p&gt;An ISO accepted C++ tooling is inexistent, so each project will choose their own toolings based on personal preference, and sometimes, based on Corporations preferences, and unfortunately there&#x27;s no common ground on what should be used. There are some programs that got the &lt;code&gt;Standard by consensus&lt;&#x2F;code&gt;, like &lt;code&gt;CMake&lt;&#x2F;code&gt;. But even tough, projects will choose &lt;code&gt;handmade makefiles&lt;&#x2F;code&gt;, &lt;code&gt;KConfig&lt;&#x2F;code&gt;, &lt;code&gt;meson&lt;&#x2F;code&gt;, &lt;code&gt;autotools&lt;&#x2F;code&gt;, and many others exist.&lt;&#x2F;p&gt;
 &lt;p&gt;The same thing happens for Package Managers, each Linux distributtion has a variant of packages, and on top of that there&#x27;s &lt;code&gt;vcpkg&lt;&#x2F;code&gt;, &lt;code&gt;conan&lt;&#x2F;code&gt; - each one with pros and cons.&lt;&#x2F;p&gt;
 &lt;p&gt;The lack of a &lt;code&gt;node&lt;&#x2F;code&gt; or a &lt;code&gt;cargo&lt;&#x2F;code&gt; or a &lt;code&gt;pip&lt;&#x2F;code&gt; that&#x27;s the entry point for the language makes it complex for developers to know where to start, and the most common idea is to build what doesn&#x27;t exist, or manually install (via &lt;code&gt;git submodules&#x2F;git subtrees&lt;&#x2F;code&gt;) things that are not disponible in your distribution or operating system.&lt;&#x2F;p&gt;
@@ -116,17 +122,23 @@ Note that every line on runtimeDependencies and buildDependencies are a &lt;code
 &lt;h1 id=&quot;are-the-devs-happy&quot;&gt;Are the devs Happy?&lt;&#x2F;h1&gt;
 &lt;p&gt;Yes, and I would use KDE Frameworks again.&lt;&#x2F;p&gt;
 &lt;p&gt;The work for &lt;code&gt;Codevis&lt;&#x2F;code&gt; is sponsored by &lt;code&gt;Bloomberg&lt;&#x2F;code&gt;, and done by &lt;code&gt;Codethink&lt;&#x2F;code&gt; in the open, inside of the KDE Repositories.&lt;&#x2F;p&gt;
-</summary>
+</content>
         
     </entry>
     <entry xml:lang="en">
         <title>Codevis Weekly Update</title>
         <published>2023-10-06T00:00:00+00:00</published>
         <updated>2023-10-06T00:00:00+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://tcanabrava.github.io/codevis-weekly-update/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/codevis-weekly-update/"/>
         <id>https://tcanabrava.github.io/codevis-weekly-update/</id>
         
         <summary type="html">&lt;p&gt;Welcome to the first &amp;quot;Codevis Weekly Update&amp;quot;&lt;&#x2F;p&gt;
