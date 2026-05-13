@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Tomaz Canabrava Ramblings - kde</title>
+    <subtitle>Somewhat updated list of C++, Qt and KDE bits</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://tcanabrava.github.io/tags/kde/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://tcanabrava.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-03-13T00:00:00+00:00</updated>
+    <id>https://tcanabrava.github.io/tags/kde/atom.xml</id>
+    <entry xml:lang="en">
+        <title>FOSSASIA 2026: Bangkok, Booths, and the Hallway Track</title>
+        <published>2026-03-13T00:00:00+00:00</published>
+        <updated>2026-03-13T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/fossasia-2026/"/>
+        <id>https://tcanabrava.github.io/fossasia-2026/</id>
+        
+        <summary type="html">&lt;p&gt;I went to FOSSASIA Summit 2026 in Bangkok, and I took the time to write this report because of how much things happened in three days, also because I am not much of a blogger.&lt;&#x2F;p&gt;
+&lt;p&gt;FOSSASIA is Asia&#x27;s big open source event and this year it took place at True Digital Park West - a rather exageratted shopping mall and convention center, which was great because whenever I was hungry I could just quickly go eat some lovely thai dishes, and back.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The State of KDE Apps and Plasma in Archlinux</title>
+        <published>2024-05-09T00:00:00+00:00</published>
+        <updated>2024-05-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/state-kde-arch/"/>
+        <id>https://tcanabrava.github.io/state-kde-arch/</id>
+        
+        <content type="html" xml:base="https://tcanabrava.github.io/state-kde-arch/">&lt;p&gt;KDE has a symbiotic relationship with many linux distros, since while we develop our software we also use particular versions of linux, I personally use archlinux as my distro of choice for many years being the only distro that I manage to bare for more than six months ( and I believe I am using it for more than 15 years already so that counts).&lt;&#x2F;p&gt;
+&lt;p&gt;The &quot;recipe&quot; for packaging KDE software for arch is big, because we are big, and packaging large amounts of software is no easy feat, so me and Antonio Rojas started to update the build scripts to be less manual and less error prone. All the versions of Plasma 6 that have been packaged for arch are using this scripts in one way or another (or manually when we broke everything :)&lt;&#x2F;p&gt;
+&lt;p&gt;This work is being done in a separate branch to not break the current workflow, but things are looking good and we hope to merge this in master soon, so that deploying newer versions of KDE software for arch will be a single command, meaning more time for the developers and less time creating packages.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Porting Codevis to KDE</title>
+        <published>2023-10-12T00:00:00+00:00</published>
+        <updated>2023-10-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/porting-codevis-to-kde/"/>
+        <id>https://tcanabrava.github.io/porting-codevis-to-kde/</id>
+        
+        <content type="html" xml:base="https://tcanabrava.github.io/porting-codevis-to-kde/">&lt;h1 id=&quot;the-problem-with-c-tooling&quot;&gt;The Problem with C++ Tooling&lt;&#x2F;h1&gt;
+&lt;p&gt;An ISO accepted C++ tooling is inexistent, so each project will choose their own toolings based on personal preference, and sometimes, based on Corporations preferences, and unfortunately there&#x27;s no common ground on what should be used. There are some programs that got the &lt;code&gt;Standard by consensus&lt;&#x2F;code&gt;, like &lt;code&gt;CMake&lt;&#x2F;code&gt;. But even tough, projects will choose &lt;code&gt;handmade makefiles&lt;&#x2F;code&gt;, &lt;code&gt;KConfig&lt;&#x2F;code&gt;, &lt;code&gt;meson&lt;&#x2F;code&gt;, &lt;code&gt;autotools&lt;&#x2F;code&gt;, and many others exist.&lt;&#x2F;p&gt;
+&lt;p&gt;The same thing happens for Package Managers, each Linux distributtion has a variant of packages, and on top of that there&#x27;s &lt;code&gt;vcpkg&lt;&#x2F;code&gt;, &lt;code&gt;conan&lt;&#x2F;code&gt; - each one with pros and cons.&lt;&#x2F;p&gt;
+&lt;p&gt;The lack of a &lt;code&gt;node&lt;&#x2F;code&gt; or a &lt;code&gt;cargo&lt;&#x2F;code&gt; or a &lt;code&gt;pip&lt;&#x2F;code&gt; that&#x27;s the entry point for the language makes it complex for developers to know where to start, and the most common idea is to build what doesn&#x27;t exist, or manually install (via &lt;code&gt;git submodules&#x2F;git subtrees&lt;&#x2F;code&gt;) things that are not disponible in your distribution or operating system.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;how-codevis-started-tools-and-libraries&quot;&gt;How Codevis Started (Tools and Libraries)&lt;&#x2F;h1&gt;
+&lt;p&gt;Codevis started as an experiment to see if it would be possible to apply the ideas in the &lt;code&gt;Large Scale C++&lt;&#x2F;code&gt; book by &lt;code&gt;John Lakos&lt;&#x2F;code&gt;. A small proof of concept was created three years ago, and we adopted a lot of libraries to be able to work fast keeping the quality high:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Qt (5 and 6)&lt;&#x2F;li&gt;
+&lt;li&gt;soci (database layer used at CERN)&lt;&#x2F;li&gt;
+&lt;li&gt;QuaZip (easy access to compressed files)&lt;&#x2F;li&gt;
+&lt;li&gt;LLVM and CLang (parsing of C++ files)&lt;&#x2F;li&gt;
+&lt;li&gt;Sqlite3 (our actual database)&lt;&#x2F;li&gt;
+&lt;li&gt;Doxygen (Documentation)&lt;&#x2F;li&gt;
+&lt;li&gt;Python (Plugins)&lt;&#x2F;li&gt;
+&lt;li&gt;Catch2 (Tests)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;And this is already a fair number of libraries, specially considering that those libraries also depend on others, keeping the Dependency graph quite large.&lt;&#x2F;p&gt;
+&lt;p&gt;One problem that we had was to create a CI for all systems we targeted with all those libraries. both of the most common C++ package managers failed us:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;conan&lt;&#x2F;code&gt; did not had LLVM (and we indeed created patches for it, adding missing libraries)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;vcpkg&lt;&#x2F;code&gt; did not had some libraries that we needed, too.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Because of this we had to manually create base CI scripts that would download, compile, install the libraries that were not found on the package managers but this is frail, as any handwritten script is.&lt;&#x2F;p&gt;
+&lt;p&gt;We started to look for a new home, and KDE was nice enough to host us. This gave us their amazing CI and buildsystems, that already had all the libraries we used, plus a few more.&lt;&#x2F;p&gt;
+&lt;p&gt;So we were able to drop the handwritten scripts for, mostly, llvm.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;why-did-the-change-from-pure-qt-to-kde-frameworks&quot;&gt;Why did the change from Pure Qt to KDE Frameworks?&lt;&#x2F;h1&gt;
+&lt;p&gt;When you are inside of a system that works, and that offers powerful and battle tested libraries, it&#x27;s worth to try to use them. There are many libraries in the KDE Frameworks that I wanted to use before but it was too hard to bring to windows if I&#x27;m not using &lt;code&gt;craft&lt;&#x2F;code&gt;,  resembles to &lt;code&gt;conan&lt;&#x2F;code&gt; and knows how to build libraries and applications within the KDE universe.&lt;&#x2F;p&gt;
+&lt;p&gt;Adding the necessary information to build &lt;code&gt;Codevis&lt;&#x2F;code&gt; in craft was much simpler than expected.:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;clone &lt;code&gt;craft-blueprints-kde&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;copy a program template and chagne it&#x27;s name&lt;&#x2F;li&gt;
+&lt;li&gt;point to the kde repository with a list of libraries it should use&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The full &lt;code&gt;codevis&lt;&#x2F;code&gt; recipe for windows, mac and linux using &lt;code&gt;craft&lt;&#x2F;code&gt; is the following:
+Note that every line on runtimeDependencies and buildDependencies are a &lt;code&gt;craft&lt;&#x2F;code&gt; recipe inside of the same repository, so just by searching the folders it&#x27;s easy to know what to add for your program.&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;import info
+from Packager.CollectionPackagerBase import PackagerLists
+
+class subinfo(info.infoclass):
+    def setTargets(self):
+        self.versionInfo.setDefaultValues()
+        self.description = &amp;quot;Codevis is a software to visualize large software architectures.&amp;quot;
+        self.displayName = &amp;quot;Codevis&amp;quot;
+        self.webpage = &amp;quot;http:&#x2F;&#x2F;invent.kde.org&#x2F;sdk&#x2F;codevis&amp;quot;
+        self.svnTargets[&amp;quot;master&amp;quot;] = &amp;quot;http:&#x2F;&#x2F;invent.kde.org&#x2F;sdk&#x2F;codevis.git&amp;quot;
+
+    def setDependencies(self):
+        self.buildDependencies[&amp;quot;kde&#x2F;frameworks&#x2F;extra-cmake-modules&amp;quot;] = None
+        self.runtimeDependencies[&amp;quot;libs&#x2F;llvm&amp;quot;] = None
+        self.runtimeDependencies[&amp;quot;libs&#x2F;zlib&amp;quot;] = None
+        self.runtimeDependencies[&amp;quot;libs&#x2F;catch2&amp;quot;] = None
+        self.runtimeDependencies[&amp;quot;qt-libs&#x2F;quazip&amp;quot;] = None
+        self.runtimeDependencies[&amp;quot;libs&#x2F;runtime&amp;quot;] = None
+        self.runtimeDependencies[&amp;quot;libs&#x2F;qt5&#x2F;qtbase&amp;quot;] = None
+
+from Package.CMakePackageBase import *
+
+class Package(CMakePackageBase):
+    def __init__(self):
+        CMakePackageBase.__init__(self)
+        self.subinfo.options.configure.args += [&amp;quot;-DUSE_QT_WEBENGINE=OFF &amp;quot;, &amp;quot;-DCOMPILE_TESTS=OFF &amp;quot;]
+
+    def createPackage(self):
+        self.defines[&amp;quot;executable&amp;quot;] = &amp;quot;bin\\codevis_desktop.exe&amp;quot;
+        return TypePackager.createPackage(self)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;how-easy-is-to-bring-a-50-100k-lines-of-code-to-kde&quot;&gt;How easy is to bring a 50 - 100K lines of code to KDE?&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KConfig&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;With The build part fixed, it was time to adopt some libraries to remove some handwritten logic we had. I wrote a configuration to c++ parser to easily access configuration keys from .ini format, but this was the only project using it, so why not change to KConfig, that uses a &lt;code&gt;XML&lt;&#x2F;code&gt; based description for settings, and it&#x27;s used by almost all programs within the KDE Infrastructure (and it certainly has way more unittests preventing breackages than what I have on my try)&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KXmlGUI&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;KXMLGui is one of the killer features of the &lt;code&gt;KDE Frameworks&lt;&#x2F;code&gt;. It allow you to split the logic of your interface with a description of &lt;code&gt;Menus&lt;&#x2F;code&gt; and &lt;code&gt;Toolbars&lt;&#x2F;code&gt; in &lt;code&gt;XML&lt;&#x2F;code&gt;, and in runtime it provides some nice features like allowing the user to change the toolbars with any action registered within the system, and a &lt;code&gt;searchable command pallete&lt;&#x2F;code&gt;, that&#x27;s something I use in all &lt;code&gt;KDE&lt;&#x2F;code&gt; applications on my machine, and I sure was missing this on Codevis.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KDocTools&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Documentation is complex, but having an integrated documentation viewer and semantics ready, that could compile into hmtl with integrated search is impressive. Now we just need the time to actually write that documentation...&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KNewStuff&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;KNewStuff is a technology that integrates with &lt;code&gt;pling.com&lt;&#x2F;code&gt; and allows to distribute certain types of downloadable goodies, like wallpapers - or in our case, &lt;code&gt;plugins&lt;&#x2F;code&gt; to improve the system with things that the main developers didn&#x27;t had the time to do yet.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KNotification&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Since the application takes a while to parse C++ code, or to run some plugins, &lt;code&gt;KNotification&lt;&#x2F;code&gt; is used to send a desktop notification to the user when an action ends. A small feature, but good for UX.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We adopted &lt;code&gt;KTextEditor&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;We need to have a place for users to develop plugins for Codevis, so KTextEditor was not a hard choice, it&#x27;s the editor that powers up Kate, one of the flagship applications from KDE. Using it has been extremely easy and fast, supporting &lt;code&gt;syntax-highlihting&lt;&#x2F;code&gt; for multiple formats.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-honest-and-unbiased-view&quot;&gt;An Honest, and unbiased, view&lt;&#x2F;h1&gt;
+&lt;p&gt;The work to port Codevis to use KDE libraries took around 2 weeks, and things were good. No major breakage and just some changes in behavior (mostly for the better). We also helped the KF6 libraries with ideas while discussing on their public channel in Matrix, and patches for some other programs while developing (such as &lt;code&gt;Konsole&lt;&#x2F;code&gt;, &lt;code&gt;Kate&lt;&#x2F;code&gt;, &lt;code&gt;Konversation&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;Nothing is perfect, but the outcome was a better, more stable, Codevis and the community was great while helping us understand how to use &#x2F; handle specifics of a library - like &lt;code&gt;KNotification&lt;&#x2F;code&gt; using &lt;code&gt;raw news&lt;&#x2F;code&gt; without a corresponding call to a deleter. This was fixed by a comment on the Documentation stating that it auto-deletes itself.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;should-corporations-adopt-kde-libraries&quot;&gt;Should Corporations Adopt KDE Libraries?&lt;&#x2F;h1&gt;
+&lt;p&gt;For sure. The libraries are really high quality, and there are more than 90 of them. &lt;code&gt;Not using&lt;&#x2F;code&gt; something that&#x27;s already working and with tests, is a waste of money on the corporation side.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;are-the-devs-happy&quot;&gt;Are the devs Happy?&lt;&#x2F;h1&gt;
+&lt;p&gt;Yes, and I would use KDE Frameworks again.&lt;&#x2F;p&gt;
+&lt;p&gt;The work for &lt;code&gt;Codevis&lt;&#x2F;code&gt; is sponsored by &lt;code&gt;Bloomberg&lt;&#x2F;code&gt;, and done by &lt;code&gt;Codethink&lt;&#x2F;code&gt; in the open, inside of the KDE Repositories.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Codevis Weekly Update</title>
+        <published>2023-10-06T00:00:00+00:00</published>
+        <updated>2023-10-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/codevis-weekly-update/"/>
+        <id>https://tcanabrava.github.io/codevis-weekly-update/</id>
+        
+        <summary type="html">&lt;p&gt;Welcome to the first &quot;Codevis Weekly Update&quot;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;what-is-codevis&quot;&gt;What is Codevis?&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;invent.kde.org&#x2F;sdk&#x2F;codevis&quot;&gt;Codevis&lt;&#x2F;a&gt; is a tool to help developers manage large codebases, sponsored by Bloomberg, developed by Codethink and hosted on the KDE Infrastructure, with all that, completely opensource with a permissive license. Codevis uses a mix of technologies to do what it does, mainly &lt;code&gt;LLVM and Clang&lt;&#x2F;code&gt; to do the heavy lifting of understanding C++ Codebases, &lt;code&gt;Qt&lt;&#x2F;code&gt; for Callback management (in the form of Signal&#x2F;Slots), &lt;code&gt;KDE Frameworks&lt;&#x2F;code&gt; libraries for the desktop application, and &lt;code&gt;pure Qt&lt;&#x2F;code&gt; for the CLI application. The database layer is written with &lt;code&gt;Soci&lt;&#x2F;code&gt; , the same database layer used in CERN, targeting sqlite3.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;but-how-does-it-work&quot;&gt;But How does it work?&lt;&#x2F;h1&gt;
+&lt;p&gt;Codevis analyzes &lt;em&gt;all&lt;&#x2F;em&gt; the &lt;em&gt;visible&lt;&#x2F;em&gt; source code from your project and creates a graph database (using a relational database) in a way that the analyst can load and interpret information from the codebase without loading the codebase. The graph-database is &lt;code&gt;comprehensive&lt;&#x2F;code&gt;, and has all the information we think it&#x27;s important, and also a lot of information that&#x27;s &lt;code&gt;good to have&lt;&#x2F;code&gt;, with a bunch of information because &lt;code&gt;why not&lt;&#x2F;code&gt;. Since something that&#x27;s not important for me could be &lt;em&gt;really&lt;&#x2F;em&gt; important for a company with billions of lines of code.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;it-just-generates-visualization&quot;&gt;It just generates visualization?&lt;&#x2F;h1&gt;
+&lt;p&gt;No. Codevis also allows you to &lt;em&gt;draw&lt;&#x2F;em&gt; your software architecture and generate ready-to-compile c++ code from it. Think of this as a possibility to have C++ templates for complex projects tha are also visually documented. You can create libraries, classes, structures, connect them quickly on a dirty mockup during a meeting, and the output could be &lt;code&gt;60 c++ files on disk&lt;&#x2F;code&gt; with all the classes, folder-hierarchy and &lt;code&gt;CMake&lt;&#x2F;code&gt; ready to compile.&lt;&#x2F;p&gt;
+&lt;p&gt;This will &lt;em&gt;not&lt;&#x2F;em&gt; add any method or implement anything, but just the creation of the C++ files and CMake scripts from a small architecture meeting is pretty interesting in my point of view.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Is this still on?</title>
+        <published>2023-10-04T00:00:00+00:00</published>
+        <updated>2023-10-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/is-this-still-on/"/>
+        <id>https://tcanabrava.github.io/is-this-still-on/</id>
+        
+        <summary type="html">&lt;p&gt;It&#x27;s been a Long long time without posting anything. Not that i&#x27;m lazy (well, a bit).
+But I have been working on a lot of things related to KDE this past few years, and I was finally able to release and opensource Codevis.
+I know this post is as small as a tweet, just checking if the integration is stil working&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Konsole in 2021</title>
+        <published>2021-12-27T00:00:00+00:00</published>
+        <updated>2021-12-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/konsole-in-2021/"/>
+        <id>https://tcanabrava.github.io/konsole-in-2021/</id>
+        
+        <summary type="html">&lt;p&gt;This year konsole kept the momentum it gained in 2020, and implemented quite
+a lot of userful new features. We Finally implemented Reflow, thanks to the
+combined effort of me and Carlos Alves - that was one of the most requested
+features of konsole for the entire history of the project.&lt;&#x2F;p&gt;
+&lt;p&gt;Ahmad Samir fixed &lt;em&gt;tons&lt;&#x2F;em&gt; of issues in konsole, all around the codebase, he&#x27;s
+the person with most commits on konsole this year, praise to him.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>KConfigXT Alternative Generator</title>
+        <published>2021-09-20T00:00:00+00:00</published>
+        <updated>2021-09-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/kconfig-alternate/"/>
+        <id>https://tcanabrava.github.io/kconfig-alternate/</id>
+        
+        <summary type="html">&lt;p&gt;I&#x27;m using for my own personal projects a generator for c++ preferences for quite a while, I&#x27;ll not say that it&#x27;s heavily tested as KConfigXT is, but it is also &lt;em&gt;much&lt;&#x2F;em&gt; more simple than it.&lt;&#x2F;p&gt;
+&lt;p&gt;While talking about it to a fellow developer he asked me how hard it would be to port the thing to KConfig (as the main backend I used was QSettings) - and the result is quite nice, the port toook
+less than a day, and now my generator generates configurations for both KConfig and QSettings.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Example configuration:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre&gt;&lt;code&gt;preferences.conf
+
+#include &amp;lt;QString&amp;gt;
+#include &amp;lt;QStandardPaths&amp;gt;
+
+Preferences {
+    General {
+        int beatsPerMinute = 60
+    }
+    Some {
+        Inner {
+            Group {
+                int value = 10
+            }
+        }
+    }
+    Harmonica {
+        QString partitureFolder = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)
+    }
+}
+
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;For those that worked with KConfigXT, it&#x27;s easy to see how much this is different from the xml that the tool uses. And differently from KConfigXT, the code is smaller, easier to read, and does not rely on magic enums, nor it has a lot of different possibilities to fine tune the settings - if you want to choose between runtime or compile time file, shared vs non shared config, etc.: KConfigXT is for you, mine is supposed to be simple and up to the point.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Konsole in 2020</title>
+        <published>2020-06-16T00:00:00+00:00</published>
+        <updated>2020-06-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/konsole-in-2020/"/>
+        <id>https://tcanabrava.github.io/konsole-in-2020/</id>
+        
+        <summary type="html">&lt;p&gt;Konsole is having a resurge in the moment, it&#x27;s the terminal emulator of choice
+for the power user that wants to break the 4th wall in *nix systems. Right now
+it can do almost all the things I want it to do, and a few more.&lt;&#x2F;p&gt;
+&lt;p&gt;Since last year you can use splits in Konsole, with full drag &amp;amp; drop support
+between tabs and windows.&lt;&#x2F;p&gt;
+&lt;p&gt;{% include youtube.html id=&quot;f9Y1pul8smQ&quot; %}&lt;&#x2F;p&gt;
+&lt;p&gt;You can also use Konsole to quickly check for thumbnails of anything that dolphin
+can show you, just by hovering with the mouse (and depending of your configuration)
+pressing shift&#x2F;control&#x2F;alt. To my knowledge Konsole is the only terminal emulator
+that supports this.&lt;&#x2F;p&gt;
+&lt;p&gt;{% include youtube.html id=&quot;8lic9xKG4lo&quot; %}&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Konsole and Splits</title>
+        <published>2019-06-27T00:00:00+00:00</published>
+        <updated>2019-06-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/konsole-splits/"/>
+        <id>https://tcanabrava.github.io/konsole-splits/</id>
+        
+        <summary type="html">&lt;p&gt;Some terminals like Tilix and Terminator offers the possibility to split the screen recursively, and I started to add the same thing to konsole. Konsole is usually said to be the swiss army knife of the terminal emulators, and if you didn&#x27;t try it yet, please do. We offer quite a lot of things that no other terminal emulator offer.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Konsole and Wayland</title>
+        <published>2019-06-18T00:00:00+00:00</published>
+        <updated>2019-06-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/konsole-wayland/"/>
+        <id>https://tcanabrava.github.io/konsole-wayland/</id>
+        
+        <summary type="html">&lt;p&gt;Wayland needs a different mindset when you are programming, you cannot just assume things works the same way as in as X11. One of my first patches to konsole was the rewrite of the Tab Bar, and a different way to deal with Drag &amp;amp; Drop of the tabs. In my mind - and how wrong I was - I could assume that I was dragging to a konsole main window by querying the widget below the mouse.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The state of Terminal Emulators in Linux</title>
+        <published>2019-06-15T00:00:00+00:00</published>
+        <updated>2019-06-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/the-state-of-terminals-in-linux/"/>
+        <id>https://tcanabrava.github.io/the-state-of-terminals-in-linux/</id>
+        
+        <summary type="html">&lt;p&gt;We are seeing a strange trend nowadays: The terminal is being more widely used in windows, after they fixed the broken cmd.exe and MS is actually actively promoting their terminal applications like Visual Studio Code and the new Windows Terminal, but on the other hand the Unix world was always terminal based, even if you tend to use the Desktop Environment for your daily needs you probably also had a Terminal open somewhere.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Hello new Konsole</title>
+        <published>2019-06-05T00:00:00+00:00</published>
+        <updated>2019-06-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/hello-new-konsole/"/>
+        <id>https://tcanabrava.github.io/hello-new-konsole/</id>
+        
+        <summary type="html">&lt;p&gt;Konsole has been ready for many many years, and got almost 10 years without anything really exciting being added, mostly because the software is ready, why should we modify something that works to add experimental features?&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

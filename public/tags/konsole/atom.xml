@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Tomaz Canabrava Ramblings - konsole</title>
+    <subtitle>Somewhat updated list of C++, Qt and KDE bits</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://tcanabrava.github.io/tags/konsole/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://tcanabrava.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-03-13T00:00:00+00:00</updated>
+    <id>https://tcanabrava.github.io/tags/konsole/atom.xml</id>
+    <entry xml:lang="en">
+        <title>FOSSASIA 2026: Bangkok, Booths, and the Hallway Track</title>
+        <published>2026-03-13T00:00:00+00:00</published>
+        <updated>2026-03-13T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tcanabrava.github.io/fossasia-2026/"/>
+        <id>https://tcanabrava.github.io/fossasia-2026/</id>
+        
+        <summary type="html">&lt;p&gt;I went to FOSSASIA Summit 2026 in Bangkok, and I took the time to write this report because of how much things happened in three days, also because I am not much of a blogger.&lt;&#x2F;p&gt;
+&lt;p&gt;FOSSASIA is Asia&#x27;s big open source event and this year it took place at True Digital Park West - a rather exageratted shopping mall and convention center, which was great because whenever I was hungry I could just quickly go eat some lovely thai dishes, and back.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

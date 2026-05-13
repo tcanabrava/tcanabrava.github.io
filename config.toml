@@ -17,10 +17,7 @@ taxonomies = [
 title = "Tomaz Canabrava Ramblings"
 description = "Somewhat updated list of C++, Qt and KDE bits"
 
-generate_feed = true
-
-[markdown]
-highlight_code = true
+generate_feeds = true
 
 [extra]
 even_title = "Tomaz Canabrava Ramblings"
