@@ -17,7 +17,7 @@ Rigth now this code is in review but it currently supports quite a few things:
 - Allow to Drag & drop a split to another tab
 - Allow to Drag & drop a split to another window (if in the same process)
 
-{% include youtube.html id="f9Y1pul8smQ" %}
+{{ youtube(id="f9Y1pul8smQ") }}
 
 Expect this to be in the next version of konsole if all goes well.
 Help to test, help to find bugs, Help to test, help to find bugs.

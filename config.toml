@@ -1,23 +1,63 @@
 # The URL the site will be built for
 base_url = "https://tcanabrava.github.io"
 
+title = "Tomaz Canabrava Ramblings"
+description = "Somewhat updated list of C++, Qt and KDE bits"
+author = "Tomaz Canabrava"
+
+default_language = "en"
+theme = "tabi"
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
+
+generate_feeds = true
 feed_limit = 20
-theme = "even"
 
 taxonomies = [
     {name = "categories", feed = true},
     {name = "tags", feed = true},
 ]
 
-title = "Tomaz Canabrava Ramblings"
-description = "Somewhat updated list of C++, Qt and KDE bits"
+[search]
+index_format = "elasticlunr_json"
 
-generate_feeds = true
+[markdown]
+smart_punctuation = true
+bottom_footnotes = true
+
+[markdown.highlighting]
+theme = "catppuccin-frappe"
+style = "class"
 
 [extra]
-even_title = "Tomaz Canabrava Ramblings"
+# Main navigation. `url` is relative to base_url.
+menu = [
+    { name = "archive", url = "archive", trailing_slash = true },
+    { name = "tags", url = "tags", trailing_slash = true },
+    { name = "categories", url = "categories", trailing_slash = true },
+    { name = "about", url = "about", trailing_slash = true },
+]
+
+# Allow visitors to switch between light and dark mode.
+theme_switcher = true
+default_theme = "dark"
+
+# Show an estimated reading time and word count on posts.
+show_reading_time = true
+
+# Buttons to jump to the top/bottom of a post.
+quick_navigation_buttons = true
+
+# Copy button on code blocks.
+copy_button = true
+
+# Show the feed icon next to the site title.
+feed_icon = true
+
+socials = [
+    { name = "github", url = "https://github.com/tcanabrava", icon = "github" },
+]
