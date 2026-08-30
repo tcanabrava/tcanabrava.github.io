@@ -3,3 +3,7 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+# Built by `zola build` and by the GitHub Actions workflow.
+public
+static/giallo.css
