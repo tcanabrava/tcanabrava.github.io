@@ -36,6 +36,7 @@ style = "class"
 [extra]
 # Main navigation. `url` is relative to base_url.
 menu = [
+    { name = "projects", url = "projects", trailing_slash = true },
     { name = "archive", url = "archive", trailing_slash = true },
     { name = "tags", url = "tags", trailing_slash = true },
     { name = "categories", url = "categories", trailing_slash = true },

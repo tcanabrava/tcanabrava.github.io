@@ -55,6 +55,11 @@ release packaged for Arch has gone through those scripts in one form or another.
 
 ## Elsewhere
 
+Not everything is C++. [Harmonicon](@/projects/harmonicon/index.md) is a rhythm
+game for blues harmonica written in Rust — it listens to you play into a
+microphone and scores you on it. That and the rest are on the
+[projects](@/projects/_index.md) page.
+
 I turn up at conferences and community booths now and then — most recently
 FOSSASIA in Bangkok. The hallway track is usually the best part.
 
