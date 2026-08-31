@@ -40,6 +40,7 @@ that moves with the beat.
 
 ![The 3D play mode: notes travelling down toward an animated harmonica model](play-3d.png)
 
+<!-- more -->
 ## Getting away from charts
 
 Charts are good for learning a song and bad for learning to play. The Jam

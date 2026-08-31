@@ -14,6 +14,7 @@ compile_sass = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+# No feed_limit: the feed carries every post, not just the most recent N.
 generate_feeds = true
 feed_limit = 20
 
@@ -58,6 +59,9 @@ copy_button = true
 
 # Show the feed icon next to the site title.
 feed_icon = true
+
+# Put the whole post in the feed instead of a truncated summary.
+full_content_in_feed = true
 
 socials = [
     { name = "github", url = "https://github.com/tcanabrava", icon = "github" },

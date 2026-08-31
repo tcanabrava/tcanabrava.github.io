@@ -1,8 +1,9 @@
 +++
 title = "About"
 path = "about"
-date = 2021-10-05
 template = "info-page.html"
+# No date on purpose: a dated page is picked up by the site-wide feed, and
+# this is not a blog post.
 +++
 
 I'm Tomaz Canabrava, a KDE developer. I grew up in Salvador, Brazil, and I've
