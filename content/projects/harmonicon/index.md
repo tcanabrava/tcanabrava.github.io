@@ -4,7 +4,7 @@ description = "A rhythm game for blues harmonica, built in Rust with the Bevy en
 weight = 30
 
 [extra]
-link_to = "https://github.com/tcanabrava/harmonicon"
+link_to = "https://tcanabrava.github.io/harmonicon/"
 +++
 
 A rhythm game for blues harmonica, diatonic and chromatic, built in Rust with
