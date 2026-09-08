@@ -60,7 +60,7 @@ the theory arrives later, on its own.
 ![The lessons list, grouped into units from fundamentals to jazz](lessons-list.png)
 
 There's a curriculum underneath all of this, grouped into units and gated by
-prerequisites — from getting one clean single note out of the thing, through
+prerequisites, from getting one clean single note out of the thing, through
 bends and articulation, up to improvising over a blues. Some lessons are scored
 drills. A few aren't scoreable at all: tongue blocking sounds identical to
 puckering from the microphone's point of view, so that one is instruction you
@@ -74,9 +74,9 @@ five algorithms to chose from: FFT, YIN, pYIN, MPM and NMF.
 
 ## Status
 
-There's a lot in it — a bending
+There's a lot in it: a bending
 trainer, an in-game song editor with MIDI import, adaptive difficulty, A–B
-looping, latency calibration, a spectrogram — but "early/experimental" is an
+looping, latency calibration, a spectrogram, but "early/experimental" is an
 honest label rather than modesty.
 
 It's MIT licensed and the code is at

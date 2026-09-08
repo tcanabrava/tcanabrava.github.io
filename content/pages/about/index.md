@@ -7,7 +7,7 @@ template = "info-page.html"
 +++
 
 I'm Tomaz Canabrava, a KDE developer. I grew up in Salvador, Brazil, and I've
-been running Arch Linux as my daily driver for more than fifteen years — the
+been running Arch Linux as my daily driver for more than fifteen years, the
 only distro I've ever managed to stay on for longer than six months.
 
 Most of what I write here is C++, Qt and KDE.
@@ -15,9 +15,9 @@ Most of what I write here is C++, Qt and KDE.
 ## Work
 
 I work at [Codethink](https://www.codethink.co.uk), an open source system
-software consultancy. The work sits at the systems level — firmware, drivers,
+software consultancy. The work sits at the systems level: firmware, drivers,
 board support, operating systems, libraries, middleware, and the build tooling
-needed to turn all of that into something you can actually ship and maintain —
+needed to turn all of that into something you can actually ship and maintain,
 for clients in automotive, medical devices, financial services and heavy
 equipment.
 
@@ -42,7 +42,7 @@ There is still no other terminal that does everything Konsole does.
 
 [Codevis](https://invent.kde.org/sdk/codevis) is a C++ codebase visualisation
 tool, now part of KDE. It started as an experiment in applying the ideas from
-John Lakos' *Large Scale C++* to real projects — showing you the physical
+John Lakos' *Large Scale C++* to real projects, showing you the physical
 structure of a codebase, its components and the dependencies between them, so
 that architectural problems become something you can see rather than something
 you discover at link time.
@@ -57,11 +57,11 @@ release packaged for Arch has gone through those scripts in one form or another.
 ## Elsewhere
 
 Not everything is C++. [Harmonicon](@/projects/harmonicon/index.md) is a rhythm
-game for blues harmonica written in Rust — it listens to you play into a
+game for blues harmonica written in Rust, it listens to you play into a
 microphone and scores you on it. That and the rest are on the
 [projects](@/projects/_index.md) page.
 
-I turn up at conferences and community booths now and then — most recently
+I turn up at conferences and community booths now and then, most recently
 FOSSASIA in Bangkok. The hallway track is usually the best part.
 
 You can find my code on [GitHub](https://github.com/tcanabrava) and on

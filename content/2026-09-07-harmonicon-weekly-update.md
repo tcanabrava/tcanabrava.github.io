@@ -92,7 +92,7 @@ band. Bass, comp, melody, usually drums, and I have to work out which of those
 you meant. So every track gets converted on its own and fitted to its own
 harmonica, because the right harp for a melody is almost never the right harp
 for a bass line, and then you get a list telling you what you'd actually be
-able to play. "Track 1 — 6 notes, 0% playable. Track 2 — 100%."
+able to play. "Track 1: 6 notes, 0% playable. Track 2: 100%."
 
 If a track is called Harmonica it wins automatically, and I learned two
 exceptions to that by breaking things. A bass line called Harmonica handed me a
@@ -113,7 +113,7 @@ module and a match arm. It cost more than I wanted. That crate went from 5
 dependencies to 94, almost all of it zip and everything zip drags along behind
 it. I wrote the tradeoff down and slept on it before deciding, which I mention
 because I nearly didn't, and the thing that decided it was that zip is what
-MuseScore and the newer Guitar Pro containers genuinely need — so it buys three
+MuseScore and the newer Guitar Pro containers genuinely need, so it buys three
 formats rather than propping up one.
 
 ## Which of my detectors can hear a chord
@@ -132,7 +132,7 @@ wrong note strolling into the scorer with its hands in its pockets.
 
 None of which was visible from inside the game. Choosing pYIN in the options
 made every chord in every chart unhittable and told you nothing. The picker
-says "pYIN — single notes only" now, and if the song you loaded has chords your
+says "pYIN, single notes only" now, and if the song you loaded has chords your
 detector can't hear, a banner says so.
 
 While I was in there: unplugging your microphone in the middle of a song used
